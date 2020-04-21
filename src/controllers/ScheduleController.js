@@ -28,6 +28,12 @@ module.exports = {
     async create(request, response) {
         const { idService, client, date, status, cpfStore, idUser, hour} = request.body;
 
+        const validateSchedule = await connection('Schedule').
+        select("*").where('idUser').andWhere('date', date).andWhere('hour', hour);
+
+        if(validateSchedule !== [])
+            return response.json({ warning: "O horário já está preenchido. Encontre outro horário"});
+
         try{
             await connection('Schedule')
             .insert({
