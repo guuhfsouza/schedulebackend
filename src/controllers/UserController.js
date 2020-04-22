@@ -52,7 +52,7 @@ module.exports = {
                     nameUser
                 });
 
-                return response.json({sucess: "Usuário criado com sucesso. Sua senha de acesso é :" + pass}); //quebra galho
+                return response.json({sucess: "Usuário criado com sucesso. Sua senha de acesso é: " + pass}); //quebra galho
             }
             else{
                 return response.status(400).json({ error: "Usuário já existe para sua loja. Favor recuperar senha."});
