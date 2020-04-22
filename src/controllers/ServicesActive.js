@@ -9,7 +9,7 @@ module.exports = {
             const services = await connection('Service')
             .select('*')
             .where('cpfStore', cpfStore)
-            .andWhere('status'.trim(), 'S');
+            .andWhere('ative'.trim(), 'S');
 
             return response.json(services);
  
