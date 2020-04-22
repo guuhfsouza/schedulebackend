@@ -6,6 +6,8 @@ const ProfileController = require('./controllers/ProfileController');
 const ServiceController = require('./controllers/ServiceController');
 const ScheduleController = require('./controllers/ScheduleController');
 const ProfileScheduleController = require('./controllers/ProfileScheduleController');
+const ServicesActiveController = require('./controllers/ServicesActive');
+
 
 const routes = express.Router();
 
@@ -27,4 +29,5 @@ routes.put('/schedules', ScheduleController.update);
 
 routes.get('/profile-schedule', ProfileScheduleController.index);
 
+routes.get('/services-active', ServicesActiveController.index);
 module.exports = routes;
