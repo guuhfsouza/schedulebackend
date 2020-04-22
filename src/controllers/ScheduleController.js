@@ -35,7 +35,7 @@ module.exports = {
             return response.json({ warning: "O horário já está preenchido. Encontre outro horário"});
 
         try{
-            const response = await connection('Schedule')
+            response = await connection('Schedule')
             .insert({
                 idService,
                 client,
@@ -46,7 +46,7 @@ module.exports = {
                 hour
             })
 
-            return response.json([ response,
+            return response.json([response,
                 { sucess: `Horário do dia ${date} as ${hour} agendado com sucesso para o Sr(a) ${client}`}]);
     
         }
