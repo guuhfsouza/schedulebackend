@@ -31,7 +31,7 @@ module.exports = {
         const validateSchedule = await connection('Schedule').
         select("*").where('idUser', idUser).andWhere('date', date).andWhere('hour', hour).first();
 
-        if(validateSchedule !== [])
+        if(!validateSchedule)
             return response.json({ warning: "O horário já está preenchido. Encontre outro horário"});
 
         try{
