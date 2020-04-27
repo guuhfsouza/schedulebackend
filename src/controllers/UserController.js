@@ -9,7 +9,7 @@ module.exports = {
 
         const users = await connection('Users')
         .where('cpf_People', cpfStore)
-            .select('idUser', 'email', 'active', 'typeUser', 'nameUser');        
+            .select('*');        
         
         if(!users){
             return response.status(400).json({warning : "Nenhum usuário cadastrado ainda"});            
