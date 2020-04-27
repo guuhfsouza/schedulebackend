@@ -1,0 +1,22 @@
+const connection = require('../database/connection');
+
+module.exports = {
+    async index(request, response) {
+        const email = request.headers.email;
+        const pass = request.headers.password;
+
+        const users = await connection('Users')
+        .where('email', email)
+            .andWhere('password', pass)
+            .first()
+            .select('idUser','email', 'cpf_People', 'active', 'typeUser', 'nameUser');        
+        
+        if(!users){
+            return response.status(400).json({error : 'Cadastro não existente. Verifique seu usuário e senha caso'
+            +  'já tenha se cadastrado.'});            
+        }
+        else{
+            return response.status(200).json(users);
+        }
+    }
+}

@@ -5,18 +5,14 @@ module.exports = {
 
     
     async index(request, response) {
-        const email = request.headers.email;
-        const pass = request.headers.password;
+        const cpfStore = request.headers.authorization;
 
         const users = await connection('Users')
-        .where('email', email)
-            .andWhere('password', pass)
-            .first()
-            .select('idUser','email', 'cpf_People', 'active', 'typeUser', 'nameUser');        
+        .where('cpf_People', cpfStore)
+            .select('email', 'active', 'typeUser', 'nameUser');        
         
         if(!users){
-            return response.status(400).json({error : 'Cadastro não existente. Verifique seu usuário e senha caso'
-            +  'já tenha se cadastrado.'});            
+            return response.status(400).json({warning : "Nenhum usuário cadastrado ainda"});            
         }
         else{
             return response.status(200).json(users);

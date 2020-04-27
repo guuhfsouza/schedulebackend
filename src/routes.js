@@ -7,7 +7,7 @@ const ServiceController = require('./controllers/ServiceController');
 const ScheduleController = require('./controllers/ScheduleController');
 const ProfileScheduleController = require('./controllers/ProfileScheduleController');
 const ServicesActiveController = require('./controllers/ServicesActive');
-
+const AuthenticationUser = require('./controllers/AuthenticationUser');
 
 const routes = express.Router();
 
@@ -30,4 +30,7 @@ routes.put('/schedules', ScheduleController.update);
 routes.get('/profile-schedule', ProfileScheduleController.index);
 
 routes.get('/services-active', ServicesActiveController.index);
+
+routes.get('/authentication', AuthenticationUser.index);
+
 module.exports = routes;
