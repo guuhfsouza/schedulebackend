@@ -55,7 +55,7 @@ module.exports = {
             return response.json({sucess: "Usuário criado com sucesso. Realize a recuperção de senha"}); //quebra galho
             }
             else{
-                return response.status(400).json({ error: "Usuário já existe para sua loja. Favor recuperar senha."});
+                return response.json({ warning: "Usuário já existe para sua loja. Favor recuperar senha."});
             }
         }
         catch (err){
