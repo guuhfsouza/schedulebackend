@@ -1,5 +1,5 @@
 const connection = require('../database/connection');
-const generatePass = require('../utils/generatePass');
+//const generatePass = require('../utils/generatePass');
 
 module.exports = {
 
@@ -41,18 +41,18 @@ module.exports = {
                 (date.getMonth()+1).toString() + '/' + date.getFullYear();
                 console.log(created_At);
 
-                const pass = generatePass();
+//                const pass = generatePass();
                 await connection('Users').insert({
                     cpf_People,
                     email, 
-                    password : pass,
+                    password,
                     created_At,
                     active,
                     typeUser,
                     nameUser
                 });
 
-                return response.json({sucess: "Usuário criado com sucesso. Sua senha de acesso é: " + pass}); //quebra galho
+            return response.json({sucess: "Usuário criado com sucesso. Realize a recuperção de senha"}); //quebra galho
             }
             else{
                 return response.status(400).json({ error: "Usuário já existe para sua loja. Favor recuperar senha."});
