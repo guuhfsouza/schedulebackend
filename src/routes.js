@@ -32,5 +32,6 @@ routes.get('/profile-schedule', ProfileScheduleController.index);
 routes.get('/services-active', ServicesActiveController.index);
 
 routes.get('/authentication', AuthenticationUser.index);
+routes.put('/authentication', AuthenticationUser.update);
 
 module.exports = routes;

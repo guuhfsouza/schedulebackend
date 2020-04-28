@@ -18,5 +18,23 @@ module.exports = {
         else{
             return response.status(200).json(users);
         }
+    },
+
+    async update(request, response){
+        const {email, password} = request.body;
+
+        const getUser =  await connection('Users')
+        .where('email', email).first();
+
+        if(getUSer)
+                return response.status(400).json({ warning: "E-mail não cadastrado em nossa base."});
+
+        await connection('Users')
+        .update({
+            password
+        })
+        .where('idUser', getUser.idUser);
+        
+        return response.status(200).json({sucess: "Senha atualizada com sucesso."});
     }
 }
