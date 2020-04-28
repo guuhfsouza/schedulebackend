@@ -23,7 +23,8 @@ module.exports = {
     async update(request, response){
         const {email, password} = request.body;
 
-        const getUser =  await connection('Users')
+        const getUser =  await (await connection('Users'))
+        .select("*")
         .where('email', email).first();
 
         if(getUSer)
