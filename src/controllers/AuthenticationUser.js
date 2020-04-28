@@ -23,9 +23,10 @@ module.exports = {
     async update(request, response){
         const {email, password} = request.body;
 
-        const getUser =  await (await connection('Users'))
-        .select("*")
-        .where('email', email).first();
+        const getUser =  await connection('Users')
+        .select('*')
+        .where('email', email)
+        .first();
 
         if(getUSer)
                 return response.status(400).json({ warning: "E-mail não cadastrado em nossa base."});
