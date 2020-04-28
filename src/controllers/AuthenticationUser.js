@@ -23,19 +23,19 @@ module.exports = {
     async update(request, response){
         const {email, password} = request.body;
 
-        const getUser =  await connection('Users')
-        .select('*')
-        .where('email', email)
-        .first();
+        // const getUser =  await connection('Users')
+        // .select('*')
+        // .where('email', email)
+        // .first();
 
-        if(getUSer)
-                return response.status(400).json({ warning: "E-mail não cadastrado em nossa base."});
+        // if(getUSer)
+        //         return response.status(400).json({ warning: "E-mail não cadastrado em nossa base."});
 
         await connection('Users')
         .update({
             password
         })
-        .where('idUser', getUser.idUser);
+        .where('email', email);
         
         return response.status(200).json({sucess: "Senha atualizada com sucesso."});
     }
