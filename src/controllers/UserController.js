@@ -35,7 +35,8 @@ module.exports = {
                 const date = new Date();
                 const created_At = date.getDate() + '/' +
                 (date.getMonth()+1).toString() + '/' + date.getFullYear();
-                console.log(created_At);
+                
+
 
 //                const pass = generatePass();
                 await connection('Users').insert({
@@ -61,12 +62,14 @@ module.exports = {
     },
 
     async update(request, response) {
-        const {idUser, email, password, active, typeUser, nameUser} = request.body;
+        const {idUser, email, active, typeUser, nameUser} = request.body;
         try{
+            
+            const act = active.trim();
+            
             await connection('Users').update({
                 email,
-                password,
-                active,
+                active: act,
                 typeUser,
                 nameUser
             }).where('idUser', idUser);
